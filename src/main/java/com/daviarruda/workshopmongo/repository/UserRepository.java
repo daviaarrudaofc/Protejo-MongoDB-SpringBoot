@@ -1,0 +1,11 @@
+package com.daviarruda.workshopmongo.repository;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+
+import com.daviarruda.workshopmongo.domain.User;
+
+
+public interface UserRepository extends MongoRepository<User, String>{
+
+}
