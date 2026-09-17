@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -51,7 +52,12 @@ public class UserResource {
 	            .buildAndExpand(obj.getId())						// substitui {id} pelo ID do usuário criado
 	            .toUri();											// transforma essa URL em um objeto URI
 
-	    return ResponseEntity.created(uri).build();
+	    return ResponseEntity.created(uri).build();   //O usuário foi criado, aqui está a URI dele, mas não vou devolver nada no corpo
+	}
+	@DeleteMapping (value = "{id}")
+	public ResponseEntity<Void> delete(@PathVariable String id){
+		service.delete(id);
+		return ResponseEntity.noContent().build();
 	}
 	
 	
