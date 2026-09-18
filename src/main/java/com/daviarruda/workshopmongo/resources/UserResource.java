@@ -39,7 +39,7 @@ public class UserResource {
 		return ResponseEntity.ok().body(listDto);
 	}
 	
-	@GetMapping (value = "{id}")
+	@GetMapping (value = "/{id}")
 	public ResponseEntity<UserDTO> findById(@PathVariable String id){
 		User obj = service.findById(id);
 		return ResponseEntity.ok().body(new UserDTO(obj));
@@ -56,7 +56,7 @@ public class UserResource {
 
 	    return ResponseEntity.created(uri).build();   //O usuário foi criado, aqui está a URI dele, mas não vou devolver nada no corpo
 	}
-	@DeleteMapping (value = "{id}")
+	@DeleteMapping (value = "/{id}")
 	public ResponseEntity<Void> delete(@PathVariable String id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
